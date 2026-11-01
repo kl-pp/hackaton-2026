@@ -31,13 +31,30 @@ function actualizarBalance() {
 
     if (balance < 0) {
         balanceP.textContent = `-$${Math.abs(balance).toLocaleString("es-AR")}`;
+        balanceP.classList.add("text-red-600");
     } else {
         balanceP.textContent = `$${balance.toLocaleString("es-AR")}`;
+        balanceP.classList.remove("text-red-600");
     }
 }
 
 function mostrarMovimiento(movimiento) {
     const elemento = document.createElement("li");
+
+    elemento.classList.add(
+        "flex",
+        "flex-col",
+        "gap-3",
+        "w-full",
+        "max-w-md",
+        "break-words",
+        "bg-amber-100/95",
+        "border-2",
+        "border-amber-700",
+        "rounded-xl",
+        "p-4",
+        "shadow-md",
+    );
 
     const montoFormateado =
         (movimiento.tipo === "ingreso" ? "+" : "-") +
@@ -49,8 +66,25 @@ function mostrarMovimiento(movimiento) {
         `${movimiento.categoria} | ` +
         `${montoFormateado}`;
 
+    if (movimiento.tipo === "ingreso") {
+        elemento.classList.add("text-green-600");
+    } else {
+        elemento.classList.add("text-red-600");
+    }
+
     const botonEliminar = document.createElement("button");
     botonEliminar.textContent = "Eliminar";
+    botonEliminar.classList.add(
+        "bg-red-700",
+        "hover:bg-red-800",
+        "text-white",
+        "font-semibold",
+        "px-3",
+        "py-2",
+        "rounded-lg",
+        "shadow-sm",
+        "transition-colors",
+    );
 
     botonEliminar.addEventListener("click", () => {
         elemento.remove();
@@ -68,10 +102,36 @@ function mostrarMovimiento(movimiento) {
 function generarResumen() {
     const titulos = ["Categoría", "Ingresos", "Gastos"];
     const resumen = document.createElement("table");
+
+    resumen.classList.add(
+        "w-full",
+        "max-w-2xl",
+        "border-collapse",
+        "bg-amber-100/95",
+        "rounded-lg",
+        "overflow-hidden",
+        "shadow-lg",
+    );
     const encabezado = document.createElement("tr");
+
+    encabezado.classList.add(
+        "bg-linear-to-r",
+        "from-green-950",
+        "via-green-800",
+        "to-green-600",
+        "text-white",
+    );
 
     titulos.forEach((titulo) => {
         const titular = document.createElement("th");
+        titular.classList.add(
+            "px-4",
+            "py-3",
+            "text-left",
+            "font-bold",
+            "border-b-2",
+            "border-green-700",
+        );
         titular.textContent = titulo;
 
         encabezado.appendChild(titular);
@@ -81,6 +141,12 @@ function generarResumen() {
 
     Transaccion.categorias.forEach((categoria) => {
         const fila = document.createElement("tr");
+        fila.classList.add(
+            "even:bg-amber-100",
+            "odd:bg-amber-50",
+            "hover:bg-yellow-200",
+            "transition-colors",
+        );
 
         const movimientosCategoria = Transaccion.agruparCategoria(categoria);
 
@@ -101,6 +167,13 @@ function generarResumen() {
         for (let i = 0; i < datos.length; i++) {
             const valor = datos[i];
             const data = document.createElement("td");
+            data.classList.add(
+                "px-4",
+                "py-3",
+                "border-b",
+                "border-amber-200",
+                "text-gray-900",
+            );
 
             data.textContent = valor;
             fila.appendChild(data);
@@ -109,7 +182,8 @@ function generarResumen() {
         resumen.appendChild(fila);
     });
 
-    resumenT.innerHTML = "<h2>Resumen por Categorías</h2>";
+    resumenT.innerHTML =
+        "<h2 class='text-xl font-bold'>Resumen por Categorías</h2>";
     resumenT.appendChild(resumen);
 }
 
