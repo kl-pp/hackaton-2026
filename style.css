@@ -1,0 +1,81 @@
+body {
+    background-image: url(assets/fondo.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.contenedor {
+    opacity: 0.8;
+}
+
+.subtitulo {
+    border-style: double;
+    background: linear-gradient(45deg, #2bff00 0%, #08bf14 50%, #024006 100%);
+
+}
+
+header {
+    display: flex;
+    border-style: groove;
+    background: linear-gradient(0deg, #fff700 0%, #ffbb00 80%, #c98001 100%);
+}
+
+.panel-balance {
+    display: flex;
+    border-style: solid;
+    background: linear-gradient(45deg, #ccb103 0%, #f4f40e 20%, #eff1f2 70%, #f6d91a 100%);
+    flex-direction: column;
+}
+
+.ingresos,
+.gastos,
+.balance {
+    border-style: dashed;
+}
+
+.formar-movimientos {
+    display: flex;
+    border-style: solid;
+    background: linear-gradient(135deg, #959595 0%, #aeaea8 20%, #eff1f2 70%, #0d0d0d 100%);
+    flex-direction: column;
+}
+
+.formar-movimientos input,
+.formar-movimientos select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#descripcion {
+    border-style: outset;
+    background: linear-gradient(45deg, #7e79f9 0%, #ffffff 25%, #ffffff 75%, #7a83f9 100%);
+}
+
+#monto {
+    border-style: outset;
+    background: linear-gradient(45deg, #f9fafb 0%, #5e5e63 100%);
+}
+
+#tipo {
+    border-style: outset;
+    background: linear-gradient(45deg, #05f301 0%, #f33232 100%);
+}
+
+.historial-movimientos {
+    display: flex;
+    border-style: solid;
+    background: linear-gradient(225deg, #1961df 30%, #0099f2 45%, #1961df 100%);
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#resumen-texto {
+    display: flex;
+    border-style: groove;
+    background: linear-gradient(0deg, #fff30c 40%, #fcfafa 100%);
+    flex-direction: column;
+    flex-wrap: wrap;
+}
